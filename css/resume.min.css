@@ -11,7 +11,15 @@
   border-bottom: 1px solid #eee; 
 }
 
-/* 1. DESKTOP VIEW (Screens wider than 768px) */
+/* --- Hero Banner Section --- */
+.about-banner {
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #eee; 
+}
+
+/* 1. DESKTOP VIEW */
 @media (min-width: 769px) {
   .about-banner {
     height: 480px;
@@ -26,37 +34,37 @@
   }
 }
 
-/* Shared Typography (Ensuring Boldness) */
+/* Banner Typography - Forcing the font and weight */
 .banner-name {
-  font-family: 'Saira Extra Condensed', sans-serif;
+  font-family: 'Saira Extra Condensed', sans-serif !important;
   font-size: 5.5rem; 
   font-weight: 700 !important;
   line-height: 0.9;
   text-transform: uppercase;
 }
 
-/* The "Vibrant" Maroon for the Banner */
+/* The Lighter/Vibrant Maroon Bold Fix */
 .text-maroon-banner {
-  color: #d1123e !important; /* Slightly brighter than brand maroon for better visibility */
-  font-weight: 800 !important; /* Extra bold */
+  color: #d1123e !important; /* Vibrant magenta/maroon */
+  font-weight: 800 !important; /* Thick/Bold */
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3); 
 }
 
-/* 2. MOBILE VIEW (Phones 768px and below) */
+/* 2. MOBILE VIEW (Face centered) */
 @media (max-width: 768px) {
   .about-banner {
     height: 550px; 
-    align-items: flex-end; /* Pushes content to the bottom */
+    align-items: flex-end; /* Words at the bottom */
     
-    /* Shift background-position to the RIGHT (85%) to center your face */
-    background-position: 85% center; 
+    /* Center on your face (85%) instead of the plant */
+    background-position: 85% center !important; 
     
     background-image: linear-gradient(to bottom, 
       rgba(0,0,0,0) 0%, 
       rgba(0,0,0,0) 45%, 
       rgba(0,0,0,0.7) 75%, 
       rgba(0,0,0,0.95) 100%
-    ), url('../img/profile_sitting.jpg');
+    ), url('../img/profile_sitting.jpg') !important;
   }
 
   .banner-content {
@@ -66,10 +74,6 @@
   }
 
   .banner-name {
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem !important;
   }
-
-  .banner-phonetic { font-size: 1rem; }
-  .about-banner .subheading { font-size: 1rem; color: #fff !important; }
 }
