@@ -79,7 +79,7 @@
 @media (max-width: 768px) {
   .about-banner {
     height: 350px;
-    background-position: 85% center; 
+    background-position: 70% center; 
   }
   .banner-name {
     font-size: 3rem;
