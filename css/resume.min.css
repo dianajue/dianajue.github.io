@@ -56,8 +56,8 @@
     height: 550px; 
     align-items: flex-end; /* Words at the bottom */
     
-    /* Center on your face (85%) instead of the plant */
-    background-position: 75% center !important; 
+    /* Center on your face (80%) instead of the plant */
+    background-position: 80% center !important; 
     
     background-image: linear-gradient(to bottom, 
       rgba(0,0,0,0) 0%, 
