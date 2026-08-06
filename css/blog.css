@@ -1,0 +1,313 @@
+/*!
+ * Blog styles for dianajue.com
+ *
+ * Loaded AFTER css/resume.min.css and only on blog pages. The base template
+ * sets every heading to 'Saira Extra Condensed', uppercase, with h1 at 6rem --
+ * great for a one-page CV, unreadable for long-form prose. Everything below
+ * scopes friendlier typography to the blog without touching the home page.
+ *
+ * Palette (inherited from resume.css):
+ *   maroon  #af103b   maroon-dark #824027
+ *   gray-800 #343a40  gray-700 #495057   gray-600 #868e96
+ */
+
+/* Layout -------------------------------------------------------------- */
+
+/* Same 75rem measure as section.resume-section, but without its
+   `min-height: 100vh`, which would strand short posts on a tall blank page. */
+.blog-section {
+  max-width: 75rem;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+@media (min-width: 992px) {
+  .blog-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* Sidebar ------------------------------------------------------------- */
+
+#sideNav .navbar-nav .nav-item .nav-link.nav-link-active {
+  color: #fff;
+}
+
+/* Blog index ---------------------------------------------------------- */
+
+.blog-intro {
+  color: #868e96;
+}
+
+.blog-feed-link {
+  white-space: nowrap;
+}
+
+.blog-year {
+  font-size: 1.35rem;
+  letter-spacing: 0.08rem;
+  color: #868e96;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.75rem;
+}
+
+.blog-excerpt {
+  margin-bottom: 0.5rem;
+}
+
+.blog-readmore {
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04rem;
+}
+
+.blog-back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+/* Tags ---------------------------------------------------------------- */
+
+.post-tag {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid #dee2e6;
+  border-radius: 1rem;
+  font-family: 'Muli', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #868e96;
+}
+
+.post-tag:hover {
+  background-color: #af103b;
+  border-color: #af103b;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tag-group {
+  margin-bottom: 3rem;
+  /* Keep anchored headings clear of the fixed top bar on small screens. */
+  scroll-margin-top: 5rem;
+}
+
+.tag-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tag-list li {
+  margin-bottom: 0.6rem;
+}
+
+.tag-list-date {
+  display: inline-block;
+  min-width: 8rem;
+  color: #868e96;
+  font-size: 0.9rem;
+}
+
+/* Post header --------------------------------------------------------- */
+
+.post-header {
+  margin-bottom: 2.5rem;
+}
+
+/* Override h1 { font-size: 6rem; line-height: 5.5rem } from resume.css. */
+.post-title {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .post-title {
+    font-size: 3.25rem;
+  }
+}
+
+.post-subtitle {
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: #868e96;
+  margin-bottom: 0.75rem;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #868e96;
+}
+
+.post-meta-sep {
+  margin: 0 0.4rem;
+}
+
+.post-hero {
+  margin-bottom: 2.5rem;
+}
+
+.post-hero figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #868e96;
+}
+
+/* Post body ----------------------------------------------------------- */
+
+/* Darker than the site's #868e96 and capped near 70 characters per line --
+   both matter over several hundred words. */
+.post-content {
+  max-width: 44rem;
+  color: #495057;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.4rem;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  text-transform: none;
+  color: #343a40;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.post-content h2 { font-size: 1.9rem; }
+.post-content h3 { font-size: 1.5rem; }
+.post-content h4 { font-size: 1.25rem; }
+.post-content h5,
+.post-content h6 { font-size: 1.1rem; }
+
+.post-content li {
+  margin-bottom: 0.4rem;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+.post-content blockquote {
+  margin: 2rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 3px solid #af103b;
+  color: #868e96;
+  font-style: italic;
+}
+
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.post-content hr {
+  margin: 2.5rem 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.post-content code {
+  padding: 0.15rem 0.35rem;
+  background-color: #f8f9fa;
+  border-radius: 3px;
+  color: #af103b;
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Inside a code block, drop the inline pill treatment. */
+.post-content pre code {
+  padding: 0;
+  background: none;
+  color: #343a40;
+}
+
+/* Tables can exceed the measure, so let them scroll rather than push the
+   page sideways. */
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid #e9ecef;
+  text-align: left;
+}
+
+.post-content th {
+  font-weight: 800;
+  color: #343a40;
+}
+
+.post-content .footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  color: #868e96;
+}
+
+/* Prev / next --------------------------------------------------------- */
+
+.post-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 44rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.post-nav-item {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-label {
+  display: block;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  color: #868e96;
+}

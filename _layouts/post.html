@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<article class="blog-section p-3 p-lg-5">
+
+  <a class="blog-back" href="{{ '/blog/' | relative_url }}">
+    <i class="fas fa-arrow-left"></i> All posts
+  </a>
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span class="post-meta-sep">&middot;</span>
+      {% assign words = content | number_of_words %}
+      {{ words | divided_by: 200 | plus: 1 }} min read
+      {% if page.tags.size > 0 %}
+        <span class="post-meta-sep">&middot;</span>
+        {% for tag in page.tags %}
+          <a class="post-tag" href="{{ '/blog/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+    <figure class="post-hero">
+      <img class="img-fluid" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+      {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- Chronological neighbours. Jekyll orders site.posts newest first, so
+       page.next is the newer post and page.previous the older one. -->
+  {% if page.previous or page.next %}
+    <nav class="post-nav">
+      <div class="post-nav-item post-nav-prev">
+        {% if page.next %}
+          <span class="post-nav-label">Newer</span>
+          <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+        {% endif %}
+      </div>
+      <div class="post-nav-item post-nav-next">
+        {% if page.previous %}
+          <span class="post-nav-label">Older</span>
+          <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+
+</article>

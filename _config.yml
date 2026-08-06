@@ -1,0 +1,59 @@
+# Site settings ------------------------------------------------------------
+title: Diana Jue-Rajasingh
+author: Diana Jue-Rajasingh
+email: diana.jue-rajasingh@rice.edu
+description: >-
+  Notes on research, teaching, and social innovation from Diana Jue-Rajasingh,
+  Assistant Professor of Strategic Management at Rice Business.
+url: "https://www.dianajue.com"
+baseurl: ""
+lang: en
+timezone: America/Chicago
+
+# Blog ----------------------------------------------------------------------
+# Posts live at /blog/2026/08/06/some-title/
+permalink: /blog/:year/:month/:day/:title/
+
+# Show a post the moment it is pushed, even if its date is slightly ahead
+# of GitHub's build clock.
+future: true
+
+# Plugins -------------------------------------------------------------------
+# Only plugins on the GitHub Pages allowlist -- these run without any CI.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: /blog/feed.xml
+
+# Every file in _posts gets the post layout without repeating it in front matter.
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+
+# Build --------------------------------------------------------------------
+# NOTE: setting `exclude` replaces Jekyll's defaults entirely, so the
+# vendor/{bundle,cache,gems,ruby} entries below must stay. `vendor/` itself is
+# NOT excluded -- Bootstrap, jQuery and Font Awesome are served from there.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - package.json
+  - package-lock.json
+  - new-post.ps1
+  - node_modules
+  - scss
+  - past_versions_notes
+  - vendor/bundle
+  - vendor/cache
+  - vendor/gems
+  - vendor/ruby

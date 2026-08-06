@@ -1,0 +1,39 @@
+<!-- Mirrors the sidebar in index.html. Links point back to the home page's
+     anchors, so they work from any depth in the blog. Keep the two in sync:
+     if you add a section to index.html, add it here too. -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand" href="{{ '/' | relative_url }}">
+    <span class="d-block d-lg-none">Diana Jue-Rajasingh</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ '/img/profile.jpg' | relative_url }}" alt="Diana Jue-Rajasingh">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/#about' | relative_url }}">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/#research' | relative_url }}">Research</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/#teaching' | relative_url }}">Teaching</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/#practice' | relative_url }}">Practice</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/#recognitions' | relative_url }}">Recognitions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-active" href="{{ '/blog/' | relative_url }}">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ '/cvs/DJR_CV_updated.pdf' | relative_url }}">CV</a>
+      </li>
+    </ul>
+  </div>
+</nav>

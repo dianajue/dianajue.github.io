@@ -1,0 +1,44 @@
+---
+layout: default
+title: Tags
+description: Blog posts grouped by tag.
+permalink: /blog/tags/
+---
+<section class="blog-section p-3 p-lg-5">
+
+  <a class="blog-back" href="{{ '/blog/' | relative_url }}">
+    <i class="fas fa-arrow-left"></i> All posts
+  </a>
+
+  <h2 class="mb-3">Tags</h2>
+
+  {% if site.tags.size == 0 %}
+
+    <p>No tags yet.</p>
+
+  {% else %}
+
+    <p class="lead blog-intro">
+      {% assign sorted_tags = site.tags | sort %}
+      {% for tag in sorted_tags %}
+        <a class="post-tag" href="#{{ tag[0] | slugify }}">{{ tag[0] }} ({{ tag[1].size }})</a>
+      {% endfor %}
+    </p>
+
+    {% for tag in sorted_tags %}
+      <div class="tag-group" id="{{ tag[0] | slugify }}">
+        <h3 class="blog-year">{{ tag[0] }}</h3>
+        <ul class="tag-list">
+          {% for post in tag[1] %}
+            <li>
+              <span class="tag-list-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+
+  {% endif %}
+
+</section>
