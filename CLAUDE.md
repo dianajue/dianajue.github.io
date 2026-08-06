@@ -9,6 +9,19 @@ served at **https://www.dianajue.com**.
   template v5.0.2 (Bootstrap 4.1.3, jQuery 3.3.1, Font Awesome 5.3.1)
 - The blog is Jekyll; the rest of the site is hand-written static HTML
 
+## Blog status: not launched
+
+The blog is built but deliberately not public yet:
+
+1. All posts live in `_drafts/`, which Jekyll does not build. Nothing is served.
+2. The **Blog** nav link in `index.html` is commented out.
+
+`/blog/` itself is still reachable by direct URL and renders "No posts yet."
+
+To launch: move the files from `_drafts/` into `_posts/` (they already carry
+`YYYY-MM-DD-` prefixes, so it's a plain move), uncomment the nav link in
+`index.html`, and push.
+
 ## ⚠️ Do not run the gulp build
 
 `package.json` and `gulpfile.js` compile `scss/` → `css/resume.css` →
@@ -34,8 +47,9 @@ CNAME                 Custom domain (www.dianajue.com). Do not delete.
 _config.yml           Jekyll config.
 _layouts/             default.html (page shell), post.html (single post).
 _includes/            head.html, sidebar.html, scripts.html.
-_posts/               One Markdown file per post: YYYY-MM-DD-slug.md
-_drafts/              Unpublished posts (no date prefix). Created on demand.
+_posts/               Published posts: YYYY-MM-DD-slug.md. Currently empty.
+_drafts/              Not built by Jekyll, so never served. Date prefixes are
+                      kept here so publishing is a move with no rename.
 blog/index.html       Post listing at /blog/
 blog/tags.html        Tag archive at /blog/tags/
 css/resume.min.css    THE stylesheet (see warning above).
