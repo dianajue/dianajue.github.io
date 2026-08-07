@@ -138,25 +138,28 @@ since Jekyll otherwise skips that folder entirely. LiveReload is on, so the
 browser refreshes itself on save. `_config.yml` is the one file read only at
 startup, so restart the server after editing it.
 
-### Builds are slow, and the cause is Box
+### Work from `C:\Users\dj55\dev\dianajue.github.io`, not Box
 
-This repo lives under `C:\Users\dj55\Box\`, and Box's filesystem driver adds
-roughly 24 ms of latency per file. With ~1,450 files (mostly `vendor/`) that
-dominates everything:
+Do not build from a Box-synced folder. Box's filesystem driver adds ~24 ms of
+latency per file read, and with ~1,450 files (mostly `vendor/`) that dominates
+the build. Measured back to back, alternating runs:
 
-| | Full build |
-| --- | --- |
-| In the Box folder | 91–109 s |
-| Identical copy outside Box | **25 s** |
+| Full build | run 1 | run 2 |
+| --- | --- | --- |
+| `C:\Users\dj55\dev\` | **3.8 s** | **4.7 s** |
+| Box folder | 118.9 s | 94.4 s |
 
-`serve.ps1` already applies the two fixes that don't require moving anything:
-it builds to `%TEMP%` instead of `.\_site` (so Box isn't also syncing 13 MB of
-output on every rebuild), and the `wdm` gem replaces Jekyll's polling watcher,
-which was taking ~30 s just to notice an edit.
+About 20x. The Box copy does not improve with a warm cache; the cost is per
+file read, every build.
 
-The remaining 4x is inherent to Box. Cloning the repo somewhere local
-(`C:\Users\dj55\dev\`) and pushing from there would fix it — GitHub is already
-the backup, so Box adds nothing here.
+`serve.ps1` also builds to `%TEMP%` rather than `.\_site`, which keeps ~1,400
+build artifacts out of the repo, and the `wdm` gem gives Jekyll native
+filesystem events — without it Jekyll polls and took ~30 s just to notice an
+edit.
+
+An older copy of this repo may still exist under `C:\Users\dj55\Box\`. It is
+not the working copy. Editing both will diverge them, since git has no idea
+they are related. GitHub is the backup; Box adds nothing here.
 
 Ruby 3.3 specifically: `github-pages` pins Jekyll 3.10, which breaks on Ruby
 3.4+ where `logger` and `csv` left the standard library. Don't upgrade Ruby
