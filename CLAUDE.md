@@ -125,18 +125,45 @@ anchor on the *current* page. Cross-page links (Blog, CV) must not have it.
 
 ## Local preview
 
-Ruby is not installed on this machine, so there is no local Jekyll build — the
-workflow is push and check the live site. To set up previewing:
+Ruby 3.3 (`C:\Ruby33-x64`, on the user PATH) with MSYS2/gcc is installed, so the
+site builds locally:
 
 ```powershell
-# install Ruby+Devkit from rubyinstaller.org, then:
-gem install bundler
-bundle install
-bundle exec jekyll serve   # http://localhost:4000
+.\serve.ps1        # http://localhost:4000, drafts shown
+.\serve.ps1 -NoDrafts   # exactly what the live site shows
 ```
 
-`Gemfile` is already present for this. A plain static file server will *not*
-work: it won't process Liquid, so `/blog/` renders as raw template tags.
+`--drafts` renders `_drafts/` as if published — the only way to see a draft,
+since Jekyll otherwise skips that folder entirely. LiveReload is on, so the
+browser refreshes itself on save. `_config.yml` is the one file read only at
+startup, so restart the server after editing it.
+
+### Builds are slow, and the cause is Box
+
+This repo lives under `C:\Users\dj55\Box\`, and Box's filesystem driver adds
+roughly 24 ms of latency per file. With ~1,450 files (mostly `vendor/`) that
+dominates everything:
+
+| | Full build |
+| --- | --- |
+| In the Box folder | 91–109 s |
+| Identical copy outside Box | **25 s** |
+
+`serve.ps1` already applies the two fixes that don't require moving anything:
+it builds to `%TEMP%` instead of `.\_site` (so Box isn't also syncing 13 MB of
+output on every rebuild), and the `wdm` gem replaces Jekyll's polling watcher,
+which was taking ~30 s just to notice an edit.
+
+The remaining 4x is inherent to Box. Cloning the repo somewhere local
+(`C:\Users\dj55\dev\`) and pushing from there would fix it — GitHub is already
+the backup, so Box adds nothing here.
+
+Ruby 3.3 specifically: `github-pages` pins Jekyll 3.10, which breaks on Ruby
+3.4+ where `logger` and `csv` left the standard library. Don't upgrade Ruby
+without checking that.
+
+A plain static file server will *not* work in place of this: it won't process
+Liquid, so `/blog/` renders as raw template tags.
 
 ## Things that will silently break the site
 

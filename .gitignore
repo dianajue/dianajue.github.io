@@ -4,6 +4,10 @@ _site/
 .jekyll-metadata
 .sass-cache/
 
+# Bundler, if gems are ever installed into the project rather than globally
+vendor/bundle/
+.bundle/
+
 # Node
 node_modules/
 
