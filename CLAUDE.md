@@ -105,8 +105,11 @@ image: /img/banner.jpg            # optional banner across the top
 
 Conventions:
 
-- The **first paragraph is the excerpt** shown on the blog index. Make it stand
-  alone.
+- The blog index previews the **first 60 words of the whole post**, not
+  Jekyll's `post.excerpt`. `excerpt` is only the first paragraph, which made a
+  short opening line ("I'm a millennial academic.") preview as that one line.
+  `blog/index.html` uses `post.content | strip_html | truncatewords: 60`, so
+  openers can be as short as they want. Change the 60 there to resize it.
 - Filenames must be `YYYY-MM-DD-slug.md`. Jekyll silently ignores files that
   don't match.
 - Files must be **UTF-8 without BOM**. A BOM hides the front matter and the post

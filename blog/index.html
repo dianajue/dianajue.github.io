@@ -45,7 +45,13 @@ permalink: /blog/
           {% endif %}
 
           <p class="blog-excerpt">
-            {{ post.excerpt | strip_html | strip_newlines | truncatewords: 55 }}
+            {% comment %}
+              post.content, not post.excerpt: excerpt is only the first
+              paragraph, so a short punchy opening line would preview as a
+              short punchy line. strip_newlines is deliberately absent -- it
+              would jam the last word of a list item into the next one.
+            {% endcomment %}
+            {{ post.content | strip_html | truncatewords: 60 }}
           </p>
 
           <a class="blog-readmore" href="{{ post.url | relative_url }}">Read more &rarr;</a>
