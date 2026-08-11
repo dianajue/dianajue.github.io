@@ -8,7 +8,7 @@ tags:
 
 I'm a millennial academic. 
 
-As a millennial, I have participated in the entire gamut of online bloggery: Xanga, LiveJournal, Blogspot, Blogger, Tumblr, Wordpress (which is still floating around out there), and the like. As a avid consumer and producer of long-form writing, I *love* blogging. And with the ubiquity of today's short-form media, I think that blogging is a lost art form -- yes, one that is self-centered and kind of cringe, but an art form nonetheless!
+As a millennial, I have participated in the entire gamut of online bloggery: Xanga, LiveJournal, Blogspot, Blogger, Tumblr, Wordpress (which is still floating around out there), and the like. As an avid consumer and producer of long-form writing, I *love* blogging. And with the ubiquity of today's short-form media, I think that blogging is a lost art form -- yes, one that is self-centered and kind of cringe, but an art form nonetheless!
 
 As an academic, writing is a slow process. And this is by design. Papers take years from first idea to publication, and by the time a paper is out, the questions that made it interesting have moved on. Hence, this space is for shorter, half-formed ideas: what I'm reading, what has surprised me, what I'm puzzling over, and random snapshots from my civilian (read: non-academic) life's rhythms that may or may not factor into my research. All views, of course, are mine and mine alone. 
 
