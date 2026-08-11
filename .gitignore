@@ -11,6 +11,10 @@ vendor/bundle/
 # Node
 node_modules/
 
+# Obsidian workspace settings (the repo root is opened as a vault for writing
+# posts). Jekyll skips dotfiles, so this never reaches the site either way.
+.obsidian/
+
 # OS
 .DS_Store
 Thumbs.db

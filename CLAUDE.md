@@ -9,18 +9,20 @@ served at **https://www.dianajue.com**.
   template v5.0.2 (Bootstrap 4.1.3, jQuery 3.3.1, Font Awesome 5.3.1)
 - The blog is Jekyll; the rest of the site is hand-written static HTML
 
-## Blog status: not launched
+## Blog status: launched 2026-08-10
 
-The blog is built but deliberately not public yet:
+The blog is public. The **Blog** nav link is live in `index.html`, and
+`_posts/` holds the first post, `2026-08-10-starting-up-a-blog-again.md`.
 
-1. All posts live in `_drafts/`, which Jekyll does not build. Nothing is served.
-2. The **Blog** nav link in `index.html` is commented out.
+`_drafts/2026-07-22-formatting-reference.md` stays a draft on purpose — it is a
+personal markdown cheat sheet, not a post. Jekyll never builds `_drafts/`, so
+it cannot leak. Publishing anything is a plain move into `_posts/`; the
+`YYYY-MM-DD-` prefix is already correct, so nothing gets renamed.
 
-`/blog/` itself is still reachable by direct URL and renders "No posts yet."
-
-To launch: move the files from `_drafts/` into `_posts/` (they already carry
-`YYYY-MM-DD-` prefixes, so it's a plain move), uncomment the nav link in
-`index.html`, and push.
+Posts are written in Obsidian, with the repo root opened as a vault. Obsidian
+saves UTF-8 without a BOM and edits front matter through its Properties panel,
+which sidesteps the two things that silently break a post. Its `.obsidian/`
+settings folder is gitignored.
 
 ## ⚠️ Do not run the gulp build
 
@@ -129,14 +131,22 @@ Ruby 3.3 (`C:\Ruby33-x64`, on the user PATH) with MSYS2/gcc is installed, so the
 site builds locally:
 
 ```powershell
-.\serve.ps1        # http://localhost:4000, drafts shown
-.\serve.ps1 -NoDrafts   # exactly what the live site shows
+.\serve.ps1                   # http://localhost:4000, drafts shown
+.\serve.ps1 -NoDrafts -Full   # exactly what the live site shows
 ```
 
 `--drafts` renders `_drafts/` as if published — the only way to see a draft,
 since Jekyll otherwise skips that folder entirely. LiveReload is on, so the
 browser refreshes itself on save. `_config.yml` is the one file read only at
 startup, so restart the server after editing it.
+
+**Use `-Full` for the pre-push check, not `-NoDrafts` alone.** `serve.ps1`
+passes `--incremental` unless `-Full` is given, and incremental only rebuilds a
+page whose own source file changed. Publishing a post changes `_posts/`, not
+`blog/index.html`, so the index is left stale — it keeps listing drafts that
+are no longer being built, while their post URLs already 404. That looks
+exactly like "drafts are still being published" and is not. GitHub Pages always
+does a full build, so this never affects the live site.
 
 ### Work from `C:\Users\dj55\dev\dianajue.github.io`, not Box
 
