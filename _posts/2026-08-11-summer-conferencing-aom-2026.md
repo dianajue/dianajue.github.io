@@ -5,7 +5,7 @@ tags:
   - conferences
   - aom
 ---
-Assuming that most readers are civilians (i.e., non-academics): summers are for research, and research (kind of)requires conferencing. 
+Assuming that most readers are civilians (i.e., non-academics): summers are for research, and research (kind of) requires conferencing. 
 
 There exists a wide spectrum of conferences. On the one hand, you have small conferences on specialized topics where everybody actually attends the sessions. On the other hand, you have  large conferences where very few people -- sometimes only the presenters -- show up.
 
