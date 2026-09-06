@@ -61,9 +61,38 @@ tidy = (df.query("year >= 2015")
 
 ## Images
 
-Put image files in `img/` and reference them with a leading slash:
+Put blog image files in `img/blog/` and reference them with a leading slash.
+Never put them in `_drafts/` -- Jekyll skips that whole folder, so the image
+would 404 even after the post is published.
 
-`![Description](/img/your-image.jpg)`
+`![Description](/img/blog/your-image.jpg)`
 
-To add a banner image across the top of a post, set `image: /img/your-image.jpg`
-in the front matter instead.
+The description is **alt text**. It is not displayed on the page; screen
+readers read it aloud, and it appears if the image fails to load. Write it as
+a plain description of what is in the picture.
+
+### Captions
+
+For a caption people can actually see, put an italic line directly under the
+image with **no blank line between them**:
+
+```
+![A sheet of paper with a recipe written out by hand](/img/blog/recipe.png)
+*Ammini's handwritten biriyani recipe.*
+```
+
+The missing blank line is what makes it a caption -- it keeps the two together
+in one paragraph, which is what the stylesheet looks for. Leave a blank line
+and you just get an ordinary italic sentence.
+
+Images and captions are centred in the column automatically.
+
+### Banner image
+
+To run an image across the top of a post, set it in the front matter instead:
+
+```yaml
+image: /img/blog/your-image.jpg
+image_alt: What is in the picture
+image_caption: Caption shown under the banner
+```

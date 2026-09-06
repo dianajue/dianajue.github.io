@@ -202,10 +202,45 @@
   margin-bottom: 0.4rem;
 }
 
+/* `display: block` plus `auto` side margins centres the image in the prose
+   column. Without the block, an image is inline and sits on the text
+   baseline, which `auto` margins cannot centre. */
 .post-content img {
+  display: block;
   max-width: 100%;
   height: auto;
-  margin: 1rem 0;
+  margin: 1rem auto;
+}
+
+/* Captions.
+
+   Alt text is never displayed -- it exists for screen readers and for the
+   case where the image fails to load. A caption you can actually see is an
+   italic line placed DIRECTLY under the image, with no blank line between
+   the two:
+
+     ![Alt text, describing the image for screen readers](/img/blog/photo.jpg)
+     *The caption everyone can see.*
+
+   No blank line means kramdown keeps both in a single <p>, so the caption is
+   the <em> immediately following the <img> -- which is what the selector
+   below matches. A blank line would split them into two paragraphs and the
+   line would render as ordinary italic body text instead.
+
+   Deliberately plain Markdown: a Liquid {% include %} or a raw <figure>
+   block would style the same way here but would not preview in Obsidian,
+   where these posts are written. The `img + br + em` half of the selector
+   covers kramdown's hard_wrap mode, in case it is ever switched on. */
+.post-content p > img + em,
+.post-content p > img + br + em {
+  display: block;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #868e96;
 }
 
 .post-content blockquote {

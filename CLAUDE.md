@@ -12,7 +12,9 @@ served at **https://www.dianajue.com**.
 ## Blog status: launched 2026-08-10
 
 The blog is public. The **Blog** nav link is live in `index.html`, and
-`_posts/` holds the first post, `2026-08-10-starting-up-a-blog-again.md`.
+`_posts/` holds three posts, the most recent being
+`2026-09-06-india-building-relationships-abroad.md` — the first post to use
+images.
 
 `_drafts/2026-07-22-formatting-reference.md` stays a draft on purpose — it is a
 personal markdown cheat sheet, not a post. Jekyll never builds `_drafts/`, so
@@ -49,7 +51,7 @@ CNAME                 Custom domain (www.dianajue.com). Do not delete.
 _config.yml           Jekyll config.
 _layouts/             default.html (page shell), post.html (single post).
 _includes/            head.html, sidebar.html, scripts.html.
-_posts/               Published posts: YYYY-MM-DD-slug.md. Currently empty.
+_posts/               Published posts: YYYY-MM-DD-slug.md.
 _drafts/              Not built by Jekyll, so never served. Date prefixes are
                       kept here so publishing is a move with no rename.
 blog/index.html       Post listing at /blog/
@@ -57,7 +59,10 @@ blog/tags.html        Tag archive at /blog/tags/
 css/resume.min.css    THE stylesheet (see warning above).
 css/blog.css          Blog-only overrides, loaded after resume.min.css.
 new-post.ps1          Scaffolds a new post.
-img/  pdfs/  cvs/     Assets.
+img/                  Site images (profile, teaching, logos).
+img/blog/             Post images. Kept separate so post assets don't mix
+                      with the CV page's. See "Images in posts" below.
+pdfs/  cvs/           Assets.
 vendor/               Bootstrap, jQuery, Font Awesome. Must stay published —
                       that's why _config.yml's `exclude` list only names
                       vendor/{bundle,cache,gems,ruby}, never `vendor` itself.
@@ -117,6 +122,46 @@ Conventions:
   create a file another way, check the encoding.
 - Post URLs are `/blog/:year/:month/:day/:title/`. Changing `permalink` in
   `_config.yml` breaks every existing link.
+
+## Images in posts
+
+Post images go in **`img/blog/`** and are referenced with a leading slash:
+
+```markdown
+![Alt text describing the picture](/img/blog/260906_recipe.jpg)
+*The caption everyone can see.*
+```
+
+- **Never put images in `_drafts/`.** Jekyll skips that folder wholesale, so
+  only the `.md` files inside it are ever read — an image there 404s even
+  after the post is published, and even in `--drafts` preview. An image can
+  sit in `img/blog/` from day one; nothing links to it until the post is live.
+- **Alt text is not a caption.** The text in `![...]` is never displayed. It
+  is read by screen readers and shown if the image fails to load.
+- **A caption is an italic line directly under the image, with no blank line
+  between them.** That keeps both in one `<p>`, so kramdown emits
+  `<img> <em>`, which is what `css/blog.css` matches via
+  `.post-content p > img + em`. A blank line splits them into two paragraphs
+  and the caption renders as ordinary italic body text.
+- Plain Markdown is deliberate here. A Liquid `{% include %}` or a raw
+  `<figure>` block would style identically on the site but would not preview
+  in Obsidian, where posts are written.
+- `css/blog.css` centres both image and caption. Images need
+  `display: block` for this — an image is inline by default and sits on the
+  text baseline, where `margin: auto` does nothing.
+- **Obsidian does not load `css/blog.css`,** so it renders image and caption
+  inline, side by side. `.obsidian/snippets/captions.css` mirrors the site
+  rule; enable it at Settings → Appearance → CSS snippets. That folder is
+  gitignored, so it is per-machine and never reaches the site.
+- **Resize before committing.** Phone photos are ~4000px and 3–5 MB. Scale
+  the long edge to 1600px (still sharper than the ~700px column ever shows)
+  and save JPEG at quality ~82. There is no ImageMagick on this machine;
+  `Add-Type -AssemblyName System.Drawing` in PowerShell does the job. Note
+  that `/c/WINDOWS/system32/convert` is the NTFS disk utility, not ImageMagick.
+- Photographs belong in JPEG, not PNG. A 589px PNG photo was 727 KB; the same
+  image at JPEG quality 90 is 107 KB with no visible difference.
+- A banner across the top of a post is front matter instead, not body
+  Markdown: `image:`, with optional `image_alt:` and `image_caption:`.
 
 ## Editing the sidebar
 
