@@ -53,6 +53,9 @@ exclude:
   - node_modules
   - scss
   - past_versions_notes
+  # GitHub Pages renders any README.md as a page; this one was showing up
+  # in the sitemap as /vendor/fontawesome-free/.
+  - vendor/fontawesome-free/README.md
   - vendor/bundle
   - vendor/cache
   - vendor/gems
