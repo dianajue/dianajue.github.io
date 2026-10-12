@@ -230,6 +230,11 @@ Liquid, so `/blog/` renders as raw template tags.
 
 - **Deleting `CNAME`** — the custom domain reverts to `dianajue.github.io`.
   GitHub sometimes rewrites this file server-side, so `git pull` before pushing.
+- **Removing the `google-site-verification` meta tag from `index.html`** —
+  Google Search Console (verified 2026-10-12) stops treating the site as
+  Diana's. The Google search-result favicon also depends on the 192px
+  `rel="icon"` link in both `index.html` and `_includes/head.html`; Google
+  only accepts icons sized in multiples of 48px.
 - **A YAML syntax error in `_config.yml` or in any post's front matter** — the
   whole build fails and the site stops updating. GitHub emails the repo owner.
 - **Adding a Jekyll plugin that isn't on the
